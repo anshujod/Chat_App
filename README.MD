@@ -1,65 +1,48 @@
-<h1 align="center">✨ Full-Stack Chat App with Auth & Emails ✨</h1>
+<h1 align="center">✨ Full-Stack Chat Application ✨</h1>
+<h3 align="center">Real-Time Messaging • Authentication • Emails • Image Uploads</h3>
 
-![Demo App](/frontend/public/screenshot-for-readme.png)
+A modern **full-stack chat application** built using **Node.js, Express, MongoDB, React, and Socket.io**, featuring secure authentication, real-time messaging, image uploads, email notifications, and API protection — all **free-tier friendly** 🚀.
 
-Highlights:
+---
 
-- 🔐 Custom JWT Authentication (no 3rd-party auth)
-- ⚡ Real-time Messaging via Socket.io
-- 🟢 Online/Offline Presence Indicators
-- 🔔 Notification & Typing Sounds (with toggle)
+## 🔥 Features
+
+- 🔐 Custom JWT Authentication (no third-party auth)
+- ⚡ Real-time Messaging using Socket.io
+- 🟢 Online / Offline Presence Indicators
+- 🔔 Typing & Notification Sounds (toggleable)
 - 📨 Welcome Emails on Signup (Resend)
 - 🗂️ Image Uploads (Cloudinary)
 - 🧰 REST API with Node.js & Express
 - 🧱 MongoDB for Data Persistence
-- 🚦 API Rate-Limiting powered by Arcjet
+- 🚦 API Rate Limiting & Bot Protection (Arcjet)
 - 🎨 Beautiful UI with React, Tailwind CSS & DaisyUI
-- 🧠 Zustand for State Management
+- 🧠 Global State Management with Zustand
 - 🧑‍💻 Git & GitHub Workflow (branches, PRs, merges)
 - 🚀 Easy Deployment (free-tier friendly with Sevalla)
 
 ---
 
-## 🧪 .env Setup
+## 🛠️ Tech Stack
 
-### Backend (`/backend`)
+### Frontend
+- React
+- Tailwind CSS
+- DaisyUI
+- Zustand
+- Socket.io Client
 
-```bash
-PORT=3000
-MONGO_URI=your_mongo_uri_here
-
-NODE_ENV=development
-
-JWT_SECRET=your_jwt_secret
-
-RESEND_API_KEY=your_resend_api_key
-EMAIL_FROM=your_email_from_address
-EMAIL_FROM_NAME=your_email_from_name
-
-CLIENT_URL=http://localhost:5173
-
-CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-
-ARCJET_KEY=your_arcjet_key
-ARCJET_ENV=development
-```
+### Backend
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- Socket.io
+- JWT Authentication
+- Cloudinary
+- Resend (Emails)
+- Arcjet (Rate Limiting)
 
 ---
 
-## 🔧 Run the Backend
+## 📂 Project Structure
 
-```bash
-cd backend
-npm install
-npm run dev
-```
-
-## 💻 Run the Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
