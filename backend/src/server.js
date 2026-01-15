@@ -9,7 +9,12 @@ import { connectDB } from "./lib/db.js";
 import { ENV } from "./lib/env.js";
 import { app, server } from "./lib/socket.js";
 
-const __dirname = path.resolve();
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+import fs from "fs";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const PORT = ENV.PORT || 3000;
 
@@ -40,12 +45,27 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 // make ready for deployment
+console.log("[DEBUG] NODE_ENV:", ENV.NODE_ENV);
 if (ENV.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  const frontendPath = join(__dirname, "../frontend/dist");
+  const indexPath = join(frontendPath, "index.html");
 
-  app.get("*", (_, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-  });
+  console.log("[DEBUG] Frontend Path:", frontendPath);
+  console.log("[DEBUG] Index Path:", indexPath);
+
+  if (fs.existsSync(indexPath)) {
+    console.log("[DEBUG] Index.html found!");
+    app.use(express.static(frontendPath));
+
+    app.get("*", (_, res) => {
+      res.sendFile(indexPath);
+    });
+  } else {
+    console.log("[DEBUG] Index.html NOT found! Check build output.");
+    app.get("/", (req, res) => {
+      res.send("Backend is running, but Frontend build not found.");
+    });
+  }
 }
 
 server.listen(PORT, () => {
