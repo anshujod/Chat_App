@@ -47,7 +47,7 @@ app.use("/api/messages", messageRoutes);
 // make ready for deployment
 console.log("[DEBUG] NODE_ENV:", ENV.NODE_ENV);
 if (ENV.NODE_ENV === "production") {
-  const frontendPath = join(__dirname, "../frontend/dist");
+  const frontendPath = join(__dirname, "../../frontend/dist");
   const indexPath = join(frontendPath, "index.html");
 
   console.log("[DEBUG] Frontend Path:", frontendPath);
